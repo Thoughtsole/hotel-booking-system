@@ -17,8 +17,8 @@ class HotelFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'description' => $this->faker->word(30)
+            'name' => rtrim(ucfirst($this->faker->text('10')), '.'),
+            'description' => $this->faker->word(30),
         ];
     }
 }

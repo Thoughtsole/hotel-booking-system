@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('hotel_id');
             $table->foreign('hotel_id')->references('id')->on('hotels')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('room_type_id');
-            $table->foreign('room_type_id')->references('id')->on('room_types');
+            $table->foreign('room_type_id')->references('id')->on('room_types')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

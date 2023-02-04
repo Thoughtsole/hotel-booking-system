@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeeder::class);
         $this->call(HotelSeeder::class);
         $this->call(CityHotelSeeder::class);
-        $this->call(RoomType::class);
         $this->call(RoomSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
