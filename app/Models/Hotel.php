@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Hotel extends Model
 {
     use HasFactory;
 
     public function cities()
     {
-        return $this->hasMany(City::class);
+        return $this->belongsToMany(City::class);
     }
 }
