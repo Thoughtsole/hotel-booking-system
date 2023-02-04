@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\RoomType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeeder::class);
         $this->call(HotelSeeder::class);
         $this->call(CityHotelSeeder::class);
+        $this->call(RoomType::class);
+        $this->call(RoomSeeder::class);
     }
 }
