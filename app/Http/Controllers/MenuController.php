@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Menu;
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\Menu\StoreMenuRequest;
 use App\Http\Requests\Menu\EditMenuRequest;
+use App\Http\Requests\Menu\StoreMenuRequest;
+use App\Models\Menu;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class MenuController extends Controller
 {
@@ -47,7 +47,7 @@ class MenuController extends Controller
         $props = [
             'title' => 'Create Menu',
             'parent_menu' => getSelectInputMenu(),
-            'token' => csrf_token()
+            'token' => csrf_token(),
         ];
         return Inertia::render('Settings/Menu/Create', $props);
     }
@@ -75,8 +75,8 @@ class MenuController extends Controller
     {
         $this->authorize('view', Menu::class);
         $props = [
-            'title' => 'Menu Details: #'. $menu->id,
-            'menu' => $menu
+            'title' => 'Menu Details: #' . $menu->id,
+            'menu' => $menu,
         ];
         return Inertia::render('Settings/Menu/Show', $props);
     }
@@ -91,10 +91,10 @@ class MenuController extends Controller
     {
         $this->authorize('update', Menu::class);
         $props = [
-            'title' => "Update Menu : #". $menu->id,
+            'title' => "Update Menu : #" . $menu->id,
             'menu' => $menu,
             'parent_menu' => getSelectInputMenu(),
-            'token' => csrf_token()
+            'token' => csrf_token(),
         ];
         return Inertia::render('Settings/Menu/Edit', $props);
     }
@@ -123,10 +123,10 @@ class MenuController extends Controller
     {
         $this->authorize('delete', Menu::class);
         $menu = new Menu();
-        if($request->action_type == 'multi-delete'){
+        if ($request->action_type == 'multi-delete') {
             $menu->whereIn('id', $request->ids)->delete();
         }
-        if($request->menu){
+        if ($request->menu) {
             $menu->find($request->menu)->delete();
         }
         return Redirect::back();

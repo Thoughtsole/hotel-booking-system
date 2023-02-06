@@ -40,7 +40,7 @@ const menus = ref(usePage().props.value.auth.menus);
                                     <template v-for="menu in menus" :key="menu.id">
                                         <BreezeNavLink class="menu" :href="route(menu.page ? menu.page : 'guest')" :active="route().current(menu.page ? menu.page : 'guest')">
                                             {{menu.title}}
-                                            <div v-if="menu.submenu.length" class="submenu flex flex-col absolute top-16 rounded shadow-lg z-50 bg-white w-40">
+                                            <div v-if="menu.submenu && menu.submenu.length" class="submenu flex flex-col absolute top-16 rounded shadow-lg z-50 bg-white w-40">
                                                 <BreezeNavLink v-for="submenu in menu.submenu" :key="menu.id" :href="route(submenu.page ? submenu.page : 'guest')" :active="route().current(submenu.page ? submenu.page : 'guest')">
                                                     {{submenu.title}}
                                                 </BreezeNavLink>

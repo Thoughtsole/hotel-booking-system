@@ -1,18 +1,18 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Notifications\UserCreateNotification;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Session;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -46,6 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::any('role/{role}/permission', [RoleController::class, 'permission'])->name('role.permission');
     Route::resource('permission', PermissionController::class);
     Route::resource('user', UserController::class);
+    Route::resource('country', CountryController::class);
+    Route::resource('city', CityController::class);
 
     Route::get('language/{language}', function ($language) {
         session()->put('locale', $language);
