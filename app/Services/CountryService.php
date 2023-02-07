@@ -28,7 +28,11 @@ class CountryService
 
     public function store($data)
     {
+        return Country::create($data);
+    }
 
+    public function update($model, $data){
+        return $model->update($data);
     }
 
 }

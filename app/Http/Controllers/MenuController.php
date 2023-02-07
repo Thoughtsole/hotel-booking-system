@@ -68,7 +68,7 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $menu
+     * @param  Menu  $menu
      * @return \Illuminate\Http\Response
      */
     public function show(Menu $menu)
@@ -84,7 +84,7 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $menu
+     * @param  Menu  $menu
      * @return \Illuminate\Http\Response
      */
     public function edit(Menu $menu)

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Country;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCountryRequest extends FormRequest
+class EditCountryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreCountryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:countries,name',
+            'name' => 'required|unique:countries,name,' . $this->country->id,
         ];
     }
 }
