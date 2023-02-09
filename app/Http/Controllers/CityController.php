@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CityService;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CityController extends Controller
 {
+    protected $cityService;
+
+    public function __construct(CityService $cityService){
+        $this->cityService = $cityService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $this->authorize('viewAny', Country::class);
+        return Inertia::render('Settings/City/Index', $this->cityService->index($request));
     }
 
     /**

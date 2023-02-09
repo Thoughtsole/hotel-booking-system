@@ -96,10 +96,7 @@ function getActionTitle(action) {
                             <input type="checkbox" v-model="selected" :value="row.id">
                         </td>
                         <td v-if="(['select','action']).indexOf(filter_col.ref) == -1" class="px-6 py-4">
-                            <template v-if="filter_col.data_type == 'relation'">
-                                {{ getRowVal(row, filter_col.data_string) }}
-                            </template>
-                            <template v-else-if="filter_col.data_type == 'date'">
+                            <template v-if="filter_col.data_type == 'date'">
                                 {{ getFormattedDate(getRowVal(row, filter_col.ref)) }}
                             </template>
                             <template v-else>

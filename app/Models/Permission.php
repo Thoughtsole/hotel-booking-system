@@ -23,7 +23,7 @@ class Permission extends SpatiePermission
             ['ref' => 'id', 'name' => 'ID'],
             ['ref' => 'name', 'name' => 'Name'],
             ['ref' => 'guard_name', 'name' => 'Guard Name'],
-            ['ref' => 'menu_id', 'name' => 'Menu', 'data_type' => 'relation', 'data_string' => 'menu.title' ],
+            ['ref' => 'menu.title', 'name' => 'Menu'],
             ['ref' => 'created_at', 'name' => 'Created At', 'data_type' => 'date'],
             ['ref' => 'action', 'name' => 'Action', 'actions'=> 
             [
