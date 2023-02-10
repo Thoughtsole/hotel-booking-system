@@ -13,10 +13,11 @@ class CountryController extends Controller
 {
     protected $countryService;
 
-    public function __construct(CountryService $countryService){
+    public function __construct(CountryService $countryService)
+    {
         $this->countryService = $countryService;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +26,8 @@ class CountryController extends Controller
     public function index(Request $request)
     {
         $this->authorize('viewAny', Country::class);
-        $this->countryService->index($request);
-        return Inertia::render('Settings/Country/Index', $this->countryService->index($request));
+        return $request->fetch ? $this->countryService->fetch($request) : Inertia::render('Settings/Country/Index', $this->countryService->index($request));
+        // return Inertia::render('Settings/Country/Index', $this->countryService->index($request));
     }
 
     /**

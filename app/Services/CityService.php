@@ -31,6 +31,7 @@ class CityService
         return $props;
     }
 
+
     public function store($data)
     {
         return City::create($data);

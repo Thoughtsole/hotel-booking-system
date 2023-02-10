@@ -26,12 +26,29 @@ class CountryService
         return $props;
     }
 
+    public function fetch(Request $request)
+    {
+        $model = new Country();
+        $props = [
+            'cols' => $request->get('cols', []),
+            'filter' => $request->get('filter', ''),
+            'orderField' => $request->get('orderField', 'id'),
+            'orderBy' => $request->get('orderBy', 'desc'),
+        ];
+        $model = $model->selectCols($props['cols'])
+            ->applyFilter($props['filter'])
+            ->sortOrder($props['orderField'], $props['orderBy'])
+            ->getBuilder();
+            return $model->take(10)->get();
+    }
+
     public function store($data)
     {
         return Country::create($data);
     }
 
-    public function update($model, $data){
+    public function update($model, $data)
+    {
         return $model->update($data);
     }
 

@@ -22,6 +22,7 @@ class CityController extends Controller
     public function index(Request $request)
     {
         $this->authorize('viewAny', Country::class);
+        // return $request->data ? $this->cityService->index($request) : Inertia::render('Settings/City/Index', $this->cityService->index($request));
         return Inertia::render('Settings/City/Index', $this->cityService->index($request));
     }
 
@@ -32,7 +33,12 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', City::class);
+        $props = [
+            'title' => 'Create City',
+            'token' => csrf_token(),
+        ];
+        return Inertia::render('Settings/City/Create', $props);
     }
 
     /**
