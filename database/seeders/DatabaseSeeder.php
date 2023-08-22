@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
         $this->call(HotelSeeder::class);
-        $this->call(CityHotelSeeder::class);
         $this->call(RoomSeeder::class);
         $this->call(UserSeeder::class);
     }

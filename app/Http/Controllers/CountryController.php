@@ -27,7 +27,6 @@ class CountryController extends Controller
     {
         $this->authorize('viewAny', Country::class);
         return $request->fetch ? $this->countryService->fetch($request) : Inertia::render('Settings/Country/Index', $this->countryService->index($request));
-        // return Inertia::render('Settings/Country/Index', $this->countryService->index($request));
     }
 
     /**

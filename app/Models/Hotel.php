@@ -9,9 +9,9 @@ class Hotel extends Model
 {
     use HasFactory;
 
-    public function cities()
+    public function city()
     {
-        return $this->belongsToMany(City::class);
+        return $this->belongsTo(City::class);
     }
 
     public function rooms()

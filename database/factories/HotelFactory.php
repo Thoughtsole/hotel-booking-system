@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class HotelFactory extends Factory
         return [
             'name' => rtrim(ucfirst($this->faker->text('10')), '.'),
             'description' => $this->faker->word(30),
+            'city_id' => mt_rand(1, City::all()->count())
         ];
     }
 }
