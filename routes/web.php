@@ -62,7 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('test', function () {
         $notificationUser = User::find(1);
-        $notify = User::find(3);
+        $notify = User::find(1);
         $notify->notify(new UserCreateNotification($notificationUser));
         echo "ok";
         die;

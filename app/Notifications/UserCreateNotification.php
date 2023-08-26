@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Notification;
 
-class UserCreateNotification extends Notification implements ShouldBroadcast
+class UserCreateNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -50,7 +50,7 @@ class UserCreateNotification extends Notification implements ShouldBroadcast
 
     public function toBroadcast($notifiable)
     {
-        return new BroadcastMessage(['name' => "vijay babu"]);
+        return new BroadcastMessage($this->user->toArray());
     }
 
     // public function broadcastOn()
